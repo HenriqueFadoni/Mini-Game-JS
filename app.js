@@ -9,8 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
-
+var scores, roundScore, activePlayer, gamePlaying, lastDice;
 init();
 
 // Two prop. || Call back Function - Event call it for us
@@ -19,21 +18,28 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     if(gamePlaying){
         // 1. Random Number
         var dice = Math.floor(Math.random() * 6) + 1;
-    
+        
         // 2. Display the result
         var diceDOM = document.querySelector('.dice'); 
         diceDOM.style.display = 'block'; // Dice appears
         diceDOM.src = 'dice-' + dice + '.png'; // Replace Image of the dice
-    
-        // 3. Update the roung score IF the rolled number was NOT a 1
-        if( dice !== 1){
+        
+        //4.reseting case it is two 6 in a row
+        if(dice === 6 && lastDice === 6){
+            scores[activePlayer] = 0;
+            document.querySelector('#score-' + activePlayer).textContent = '0';
+            nextPlayer();
+        } else if( dice !== 1){ // 3. Update the roung score IF the rolled number was NOT a 1
             //Add score
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
+            
         }else {
             //Next Player
             nextPlayer();
         }
+        
+        lastDice = 6;
     }
 }); 
 
@@ -44,9 +50,20 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     
         // Update the UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-    
+        
+        //Getting value Max Score
+        var input = document.querySelector('.final-score').value;
+        var winningScore
+        //Undefined, 0, null or " " are COERCED to false;
+        // Anything else is COERCED to true
+        if(input){
+            winningScore = input;
+        } else {
+            winningScore = 100;
+        }
+        
         // Check if player won the game
-        if(scores[activePlayer] >= 20){
+        if(scores[activePlayer] >= winningScore){
             document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
             document.querySelector('.player-'+ activePlayer +'-panel').classList.add('winner');
             document.querySelector('.player-'+ activePlayer +'-panel').classList.remove('active');
@@ -103,6 +120,8 @@ function init(){
     document.querySelector('.player-0-panel').classList.add('active'); // Remove BUG
 
 }
+
+
 
 /***********************************
 * NEW THINGS I'VE LEARNED
