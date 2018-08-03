@@ -59,16 +59,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         if(input){
             winningScore = input;
         } else {
-            winningScore = 100;
+            alert('Please, set up a winning score!');
+            init();
         }
         
         // Check if player won the game
-        if(scores[activePlayer] >= winningScore){
+        if(scores[activePlayer] >= winningScore && winningScore !== null){
             document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
             document.querySelector('.player-'+ activePlayer +'-panel').classList.add('winner');
             document.querySelector('.player-'+ activePlayer +'-panel').classList.remove('active');
             gamePlaying = false;
-        }  else {
+        }   
+        else {
             //Next Player
             nextPlayer(); 
         }
