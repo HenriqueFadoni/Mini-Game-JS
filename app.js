@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, lastDice;
+var scores, roundScore, activePlayer, gamePlaying, lastDice, lastSecondDice;
 init();
 
 // Two prop. || Call back Function - Event call it for us
@@ -18,20 +18,27 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     if(gamePlaying){
         // 1. Random Number
         var dice = Math.floor(Math.random() * 6) + 1;
+        var secondDice = Math.floor(Math.random() * 6) + 1;
         
         // 2. Display the result
         var diceDOM = document.querySelector('.dice'); 
+        var diceSecondDOM = document.querySelector('.second-dice'); 
+        
         diceDOM.style.display = 'block'; // Dice appears
+        diceSecondDOM.style.display = 'block';
+        
+        
         diceDOM.src = 'dice-' + dice + '.png'; // Replace Image of the dice
+        diceSecondDOM.src = 'dice-' + secondDice + '.png';
         
         //4.reseting case it is two 6 in a row
-        if(dice === 6 && lastDice === 6){
+        if(dice === 6 && lastDice === 6 && secondDice === 6 && lastSecondDice === 6){
             scores[activePlayer] = 0;
             document.querySelector('#score-' + activePlayer).textContent = '0';
             nextPlayer();
-        } else if( dice !== 1){ // 3. Update the roung score IF the rolled number was NOT a 1
+        } else if( dice !== 1 && secondDice !==1){ // 3. Update the roung score IF the rolled number was NOT a 1
             //Add score
-            roundScore += dice;
+            roundScore += (dice + secondDice);
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
             
         }else {
@@ -40,6 +47,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         }
         
         lastDice = 6;
+        lastSecondDice = 6;
     }
 }); 
 
@@ -91,6 +99,7 @@ function nextPlayer(){
 
         // Hide dice again
         document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.second-dice').style.display = 'none';
     
 }
 
@@ -104,7 +113,7 @@ function init(){
     gamePlaying = true;
     
     document.querySelector('.dice').style.display = 'none'; // Making the dice disappear in the start
-
+    document.querySelector('.second-dice').style.display = 'none';
 
     //getElementByID = faster than 'querySelector'. Just works for IDS
     document.getElementById('score-0').textContent = '0';
