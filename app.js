@@ -10,29 +10,20 @@ GAME RULES:
 */
 
 var scores, roundScore, activePlayer, gamePlaying, lastDice, lastSecondDice;
+
 init();
 
 // Two prop. || Call back Function - Event call it for us
 // Anonymous Function - without a name in the 2nd prop.
 document.querySelector('.btn-roll').addEventListener('click', function(){
     if(gamePlaying){
-        // 1. Random Number
+
         randomNumber();
         var dice = randomNumber();
         var secondDice = randomNumber();
-
-
-        // 2. Display the result
-        var diceDOM = document.querySelector('.dice'); 
-        var diceSecondDOM = document.querySelector('.second-dice'); 
-
-        diceDOM.style.display = 'block'; // Dice appears
-        diceSecondDOM.style.display = 'block';
-
-
-        diceDOM.src = 'images/dice-' + dice + '.png'; // Replace Image of the dice
-        diceSecondDOM.src = 'images/dice-' + secondDice + '.png';
-
+        
+        displayResult(dice, secondDice);
+        
         //4.reseting case it is two 6 in a row
         if(dice === 6 && lastDice === 6 && secondDice === 6 && lastSecondDice === 6){
             scores[activePlayer] = 0;
@@ -54,6 +45,17 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 }); 
 function randomNumber(){
     return Math.floor(Math.random() * 6) + 1;
+}
+function displayResult(dice, secondDice){
+    var diceDOM = document.querySelector('.dice'); 
+    var diceSecondDOM = document.querySelector('.second-dice'); 
+
+    diceDOM.style.display = 'block';
+    diceSecondDOM.style.display = 'block';
+
+
+    diceDOM.src = 'images/dice-' + dice + '.png';
+    diceSecondDOM.src = 'images/dice-' + secondDice + '.png';
 }
 
 document.querySelector('.btn-hold').addEventListener('click', function() {
