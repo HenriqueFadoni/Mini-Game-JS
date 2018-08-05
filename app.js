@@ -28,8 +28,8 @@
             diceSecondDOM.style.display = 'block';
 
 
-            diceDOM.src = 'dice-' + dice + '.png'; // Replace Image of the dice
-            diceSecondDOM.src = 'dice-' + secondDice + '.png';
+            diceDOM.src = 'images/dice-' + dice + '.png'; // Replace Image of the dice
+            diceSecondDOM.src = 'images/dice-' + secondDice + '.png';
 
             //4.reseting case it is two 6 in a row
             if(dice === 6 && lastDice === 6 && secondDice === 6 && lastSecondDice === 6){
