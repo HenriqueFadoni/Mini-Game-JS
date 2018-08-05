@@ -50,11 +50,9 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     if(gamePlaying){
         globalScore();
 
-        //Getting value Max Score
         var input = document.querySelector('.final-score').value;
         var winningScore
-        //Undefined, 0, null or " " are COERCED to false;
-        // Anything else is COERCED to true
+
         if(input){
             winningScore = input;
         } else {
@@ -62,7 +60,6 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
             init();
         }
 
-        // Check if player won the game
         if(scores[activePlayer] >= winningScore && winningScore !== null){
             document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
             document.querySelector('.player-'+ activePlayer +'-panel').classList.add('winner');
@@ -70,7 +67,6 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
             gamePlaying = false;
         }   
         else {
-            //Next Player
             nextPlayer(); 
         }
     }
