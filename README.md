@@ -2,8 +2,8 @@
 ## HOW TO INSTALL
 Download the code on Github. 
  1. Just click on the button **Clone or download**
- 2. And, Download ZIP
- 3. After that extract the content in a File
+ 2. Download ZIP
+ 3. After that, extract the content in a File
  4. Click on **index.html** 
  5. Enjoy!!!
 
