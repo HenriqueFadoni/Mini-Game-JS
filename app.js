@@ -81,7 +81,7 @@ function checkingScore(winningScore){
 }
 function nextPlayer(){
     //Next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        activePlayer = activePlayer === 0 ? 1 : 0;
         roundScore = 0;
 
         document.getElementById('current-0').textContent = '0';
