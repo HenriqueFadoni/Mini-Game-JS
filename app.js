@@ -59,16 +59,8 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
             alert('Please, set up a winning score!');
             init();
         }
-
-        if(scores[activePlayer] >= winningScore && winningScore !== null){
-            document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
-            document.querySelector('.player-'+ activePlayer +'-panel').classList.add('winner');
-            document.querySelector('.player-'+ activePlayer +'-panel').classList.remove('active');
-            gamePlaying = false;
-        }   
-        else {
-            nextPlayer(); 
-        }
+        
+        checkingScore(winningScore);
     }
 });
 
@@ -76,7 +68,17 @@ function globalScore(){
     scores[activePlayer] += roundScore;
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 }
-
+function checkingScore(winningScore){
+    if(scores[activePlayer] >= winningScore && winningScore !== null){
+        document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
+        document.querySelector('.player-'+ activePlayer +'-panel').classList.add('winner');
+        document.querySelector('.player-'+ activePlayer +'-panel').classList.remove('active');
+        gamePlaying = false;
+    }   
+    else {
+        nextPlayer(); 
+    }
+}
 function nextPlayer(){
     //Next player
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
