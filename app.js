@@ -25,7 +25,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         displayResult(dice, secondDice);
         
         //4.reseting case it is two 6 in a row
-        if(dice === 6 && lastDice === 6 && secondDice === 6 && lastSecondDice === 6){
+        if(conditionSix(dice, secondDice, lastDice, lastDice)){
             scores[activePlayer] = 0;
             document.querySelector('#score-' + activePlayer).textContent = '0';
             nextPlayer();
@@ -57,6 +57,10 @@ function displayResult(dice, secondDice){
     diceDOM.src = 'images/dice-' + dice + '.png';
     diceSecondDOM.src = 'images/dice-' + secondDice + '.png';
 }
+function conditionSix(dice, secondDice, lastDice, lastDice){
+    return dice === 6 && lastDice === 6 && secondDice === 6 && lastSecondDice === 6;
+}
+
 
 document.querySelector('.btn-hold').addEventListener('click', function() {
     if(gamePlaying){
