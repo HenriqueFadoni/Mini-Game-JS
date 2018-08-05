@@ -48,11 +48,7 @@ function conditionSix(dice, secondDice, lastDice, lastDice){
 
 document.querySelector('.btn-hold').addEventListener('click', function() {
     if(gamePlaying){
-        // Add CURRENT score to GLOBAL score
-        scores[activePlayer] += roundScore;
-
-        // Update the UI
-        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+        globalScore();
 
         //Getting value Max Score
         var input = document.querySelector('.final-score').value;
@@ -79,6 +75,11 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         }
     }
 });
+
+function globalScore(){
+    scores[activePlayer] += roundScore;
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+}
 
 function nextPlayer(){
     //Next player
