@@ -1,4 +1,16 @@
 # MINI-GAME
+
+## Description
+
+This is a very basic dice game programmed in Javascript. The user can row dices with an opponent and see who gets the higher value first.
+
+## Technologies used
+
+This application was built with:
+ -HTML5
+ -CSS6
+ -Javascript
+
 ## HOW TO INSTALL
 Download the code on Github. 
  1. Just click on the button **Clone or download**
@@ -14,7 +26,3 @@ Nevertheless, the player that gets to the **Final Score** value first wins the g
 Hey, hey...!
 Hold on your horses! The game has some basic rules. First, if you roll the number **ONE** in one of your dices your **CURRENT SCORE** will be reset. Second, if you roll two **SIX** in both dices in a row your **GLOBAL AND CURRENT SCORE** will reset!!!!
 Last but not least, Good Luck!
-
-## TECHNOLOGY
-
-This application was built with HTML/CSS, and JAVASCRIPT
