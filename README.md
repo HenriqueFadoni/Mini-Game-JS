@@ -4,12 +4,16 @@
 
 This is a very basic dice game programmed in Javascript. The user can row dices with an opponent and see who gets the higher value first.
 
+## What I learned
+
+I learned to manage the DOM in Javascript, and combine it with animations in CSS.
+
 ## Technologies used
 
 This application was built with:
- -HTML5
- -CSS6
- -Javascript
+ - HTML5
+ - CSS6
+ - Javascript
 
 ## HOW TO INSTALL
 Download the code on Github. 
